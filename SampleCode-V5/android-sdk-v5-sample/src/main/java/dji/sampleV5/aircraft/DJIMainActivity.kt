@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Class Description
- *
+ **
  * @author Hoker
  * @date 2022/2/10
  *
@@ -74,8 +74,8 @@ abstract class DJIMainActivity : AppCompatActivity() {
         // 需要校验这种情况，业界标准做法，基本所有app都需要这个
         if (!isTaskRoot && intent.hasCategory(Intent.CATEGORY_LAUNCHER) && Intent.ACTION_MAIN == intent.action) {
 
-                finish()
-                return
+            finish()
+            return
 
         }
 
@@ -90,7 +90,11 @@ abstract class DJIMainActivity : AppCompatActivity() {
 
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (checkPermission()) {
             handleAfterPermissionPermitted()
@@ -111,9 +115,12 @@ abstract class DJIMainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun initMSDKInfoView() {
         msdkInfoVm.msdkInfo.observe(this) {
-            text_view_version.text = StringUtils.getResStr(R.string.sdk_version, it.SDKVersion + " " + it.buildVer)
-            text_view_product_name.text = StringUtils.getResStr(R.string.product_name, it.productType.name)
-            text_view_package_product_category.text = StringUtils.getResStr(R.string.package_product_category, it.packageProductCategory)
+            text_view_version.text =
+                StringUtils.getResStr(R.string.sdk_version, it.SDKVersion + " " + it.buildVer)
+            text_view_product_name.text =
+                StringUtils.getResStr(R.string.product_name, it.productType.name)
+            text_view_package_product_category.text =
+                StringUtils.getResStr(R.string.package_product_category, it.packageProductCategory)
             text_view_is_debug.text = StringUtils.getResStr(R.string.is_sdk_debug, it.isDebug)
             text_core_info.text = it.coreInfo.toString()
         }
@@ -148,7 +155,8 @@ abstract class DJIMainActivity : AppCompatActivity() {
                 showToast("Register Failure: ${resultPair.second}")
                 statusText = StringUtils.getResStr(this, R.string.unregistered)
             }
-            text_view_registered.text = StringUtils.getResStr(R.string.registration_status, statusText)
+            text_view_registered.text =
+                StringUtils.getResStr(R.string.registration_status, statusText)
         }
 
         msdkManagerVM.lvProductConnectionState.observe(this) { resultPair ->
