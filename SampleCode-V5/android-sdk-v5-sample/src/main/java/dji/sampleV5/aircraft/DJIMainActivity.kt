@@ -21,8 +21,10 @@ import dji.v5.manager.interfaces.ILiveStreamManager
 import dji.v5.utils.common.LogUtils
 import dji.v5.utils.common.PermissionUtil
 import dji.v5.utils.common.StringUtils
+import dji.v5.ux.sample.showcase.defaultlayout.DefaultLayoutActivity
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main_new_one.btn_start
 
 /**
  * Class Description
@@ -68,7 +70,7 @@ abstract class DJIMainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_new_one)
 
         // 有一些手机从系统桌面进入的时候可能会重启main类型的activity
         // 需要校验这种情况，业界标准做法，基本所有app都需要这个
@@ -78,7 +80,10 @@ abstract class DJIMainActivity : AppCompatActivity() {
             return
 
         }
-
+        btn_start.setOnClickListener {
+            val nextIntent = Intent(this, DefaultLayoutActivity::class.java)
+            startActivity(nextIntent)
+        }
         window.decorView.apply {
             systemUiVisibility =
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -122,18 +127,18 @@ abstract class DJIMainActivity : AppCompatActivity() {
             text_view_package_product_category.text =
                 StringUtils.getResStr(R.string.package_product_category, it.packageProductCategory)
             text_view_is_debug.text = StringUtils.getResStr(R.string.is_sdk_debug, it.isDebug)
-            text_core_info.text = it.coreInfo.toString()
+//            text_core_info.text = it.coreInfo.toString()
         }
 
-        icon_sdk_forum.setOnClickListener {
-            Helper.startBrowser(this, StringUtils.getResStr(R.string.sdk_forum_url))
-        }
-        icon_release_node.setOnClickListener {
-            Helper.startBrowser(this, StringUtils.getResStr(R.string.release_node_url))
-        }
-        icon_tech_support.setOnClickListener {
-            Helper.startBrowser(this, StringUtils.getResStr(R.string.tech_support_url))
-        }
+//        icon_sdk_forum.setOnClickListener {
+//            Helper.startBrowser(this, StringUtils.getResStr(R.string.sdk_forum_url))
+//        }
+//        icon_release_node.setOnClickListener {
+//            Helper.startBrowser(this, StringUtils.getResStr(R.string.release_node_url))
+//        }
+//        icon_tech_support.setOnClickListener {
+//            Helper.startBrowser(this, StringUtils.getResStr(R.string.tech_support_url))
+//        }
         view_base_info.setOnClickListener {
             baseMainActivityVm.doPairing {
                 showToast(it)

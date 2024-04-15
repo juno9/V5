@@ -22,12 +22,12 @@ class DJIAircraftMainActivity : DJIMainActivity() {
         GlobalPreferencesManager.initialize(DefaultGlobalPreferences(this))
         GeoidManager.getInstance().init(this)
 
-        enableDefaultLayout(DefaultLayoutActivity::class.java)
-        enableWidgetList(WidgetsActivity::class.java)
-        enableMain2(DJIMainAvtivity2::class.java)
+//        enableDefaultLayout(DefaultLayoutActivity::class.java)
+//        enableWidgetList(WidgetsActivity::class.java)
+//        enableMain2(DJIMainAvtivity2::class.java)
     }
 
     override fun prepareTestingToolsActivity() {
-        enableTestingTools(AircraftTestingToolsActivity::class.java)
+       // enableTestingTools(AircraftTestingToolsActivity::class.java)
     }
 }

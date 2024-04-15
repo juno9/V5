@@ -393,6 +393,7 @@ class KeyValueFragment : DJIFragment(), View.OnClickListener {
         when (currentChannelType) {
             dji.sampleV5.aircraft.keyvalue.ChannelType.CHANNEL_TYPE_BATTERY -> {
                 dji.sampleV5.aircraft.keyvalue.KeyItemDataUtil.initBatteryKeyList(batteryKeyList)
+
                 tips = Util.getString(R.string.battery)
                 currentKeyItemList.addAll(batteryKeyList)
             }
