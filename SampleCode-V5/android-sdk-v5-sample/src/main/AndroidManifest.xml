@@ -69,11 +69,7 @@
                 android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED"
                 android:resource="@xml/accessory_filter" />
         </activity>
-        <activity
-            android:name=".DJIMainAvtivity2"
-            android:exported="true"
-            android:screenOrientation="landscape"
-            android:theme="@style/full_screen_theme" />
+
 
         <activity
             android:name="dji.v5.ux.sample.showcase.defaultlayout.DefaultLayoutActivity"

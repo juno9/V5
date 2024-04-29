@@ -22,9 +22,12 @@ import dji.v5.utils.common.LogUtils
 import dji.v5.utils.common.PermissionUtil
 import dji.v5.utils.common.StringUtils
 import dji.v5.ux.sample.showcase.defaultlayout.DefaultLayoutActivity
+import dji.v5.ux.sample.showcase.widgetlist.WidgetsActivity
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main_new_one.btn_start
+import kotlinx.android.synthetic.main.activity_main_new_one.btn_testtools
+import kotlinx.android.synthetic.main.activity_main_new_one.btn_widgets
 
 /**
  * Class Description
@@ -82,6 +85,14 @@ abstract class DJIMainActivity : AppCompatActivity() {
         }
         btn_start.setOnClickListener {
             val nextIntent = Intent(this, DefaultLayoutActivity::class.java)
+            startActivity(nextIntent)
+        }
+        btn_widgets.setOnClickListener {
+            val nextIntent = Intent(this, WidgetsActivity::class.java)
+            startActivity(nextIntent)
+        }
+        btn_testtools.setOnClickListener {
+            val nextIntent = Intent(this, AircraftTestingToolsActivity::class.java)
             startActivity(nextIntent)
         }
         window.decorView.apply {
